@@ -1,0 +1,160 @@
+version: "3.1"
+
+nlu:
+
+# Greet
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good evening
+    - what's up
+    - howdy
+    - hey there
+
+# Goodbye
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - catch you later
+    - see ya
+    - talk to you soon
+
+# Affirm
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - indeed
+    - of course
+    - sure
+    - definitely
+    - absolutely
+    - that's right
+    - correct
+
+# Deny
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - never
+    - I don't think so
+    - not really
+    - no way
+
+# Mood Great
+- intent: mood_great
+  examples: |
+    - I'm doing great
+    - I'm fine
+    - feeling awesome
+    - never better
+    - everything's good
+    - I'm happy
+    - all good
+
+# Mood Unhappy
+- intent: mood_unhappy
+  examples: |
+    - I'm sad
+    - not feeling well
+    - I'm upset
+    - things are bad
+    - I feel down
+    - I'm unhappy
+    - terrible day
+
+# Bot Challenge
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you human?
+    - who are you?
+    - what are you?
+    - are you real?
+    - are you an AI?
+
+# Plan Trip
+- intent: plan_trip
+  examples: |
+    - I want to plan a trip
+    - help me plan my vacation
+    - can you help with travel planning?
+    - plan a trip for me
+    - I want to go on a holiday
+    - let's plan my travel
+    - organize a holiday to [Paris](destination)
+    - plan a trip to [Japan](destination) on [May 20](departure_date)
+    - [paris](destination)
+    - [new york](destination)
+
+# Search Flight
+- intent: search_flight
+  examples: |
+    - I want to book a flight
+    - find me a flight to [Paris](destination)
+    - get me a ticket to [New York](destination)
+    - I want to fly to [London](destination)
+    - search flights from [Delhi](location) to [Goa](destination)
+    - flight from [Mumbai](location) to [Dubai](destination) on [2025-05-10](departure_date)
+    - show me flights to [Bangkok](destination)
+    - one-way ticket to [Rome](destination) on [May 15](departure_date)
+    - [tokyo](destination)
+    - [dubai](destination)
+
+# Book Hotel
+- intent: book_hotel
+  examples: |
+    - I want to book a hotel
+    - book a room in [Paris](location)
+    - find me a hotel in [London](location)
+    - I need a place to stay in [New York](location)
+    - book hotel from [2025-05-10](checkin_date) for [3](duration) nights
+    - reserve accommodation in [Tokyo](location) from [June 1](checkin_date) for [2](duration) nights
+    - hotel booking in [Bangkok](location) starting [May 15](checkin_date)
+    - Book for four nights
+    - check in on [April 10](checkin_date) for [5](duration) nights
+    - I want to stay for [4](duration) nights
+    - [2](duration) nights
+    - stay [3](duration) nights in [Dubai](location)
+    - I want to stay in [Rome](location)
+
+# Ask Travel Restrictions
+- intent: ask_travel_restrictions
+  examples: |
+    - Do I need a visa for [Paris](destination)?
+    - Any COVID rules for traveling to [London](destination)?
+    - Are there any travel restrictions for [Dubai](destination)?
+    - Can I travel to [Japan](destination) without a visa?
+    - What are the current guidelines for entering [Italy](destination)?
+    - Is quarantine required in [Thailand](destination)?
+    - Do I need a vaccine certificate for [France](destination)?
+    - Any entry rules for [USA](destination)?
+    - What are the travel policies for [Canada](destination)?
+
+# Regex Patterns
+- regex: date
+  examples: |
+    - \d{4}-\d{2}-\d{2}
+    - \d{2}/\d{2}/\d{4}
+    - \d{1,2} [A-Za-z]+ \d{4}
+
+- regex: number
+  examples: |
+    - \d+
+    - one
+    - two
+    - three
+    - four
+    - five
+
+- regex: checkin_date
+  examples: |
+    - \d{4}-\d{2}-\d{2}
+    - \d{2}/\d{2}/\d{4}
+    - \d{1,2} [A-Za-z]+ \d{4}

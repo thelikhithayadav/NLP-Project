@@ -1,0 +1,79 @@
+version: "3.1"
+
+stories:
+
+- story: Greet and goodbye
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: User is happy
+  steps:
+    - intent: mood_great
+    - action: utter_mood_great
+
+- story: User is unhappy
+  steps:
+    - intent: mood_unhappy
+    - action: utter_mood_unhappy
+
+- story: Bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+
+- story: Plan a trip with form
+  steps:
+    - intent: plan_trip
+    - action: plan_trip_form
+    - active_loop: plan_trip_form
+    - slot_was_set:
+        - destination: "paris"
+        - departure_date: "2025-05-10"
+    - action: plan_trip_form
+    - active_loop: null
+    - action: utter_submit_plan_trip_form
+
+- story: Flight search from city with date
+  steps:
+    - intent: search_flight
+    - action: flight_search_form
+    - active_loop: flight_search_form
+    - slot_was_set:
+        - location: "delhi"
+        - departure_date: "2025-05-11"
+    - action: flight_search_form
+    - active_loop: null
+    - action: utter_submit_flight_search_form
+
+- story: Hotel booking with all details
+  steps:
+    - intent: book_hotel
+    - action: hotel_booking_form
+    - active_loop: hotel_booking_form
+    - slot_was_set:
+        - hotel_location: "tokyo"
+        - checkin_date: "2025-06-01"
+        - num_nights: 3
+    - action: hotel_booking_form
+    - active_loop: null
+    - action: utter_submit_hotel_booking_form
+
+- story: Ask about travel restrictions
+  steps:
+    - intent: ask_travel_restrictions
+    - action: utter_ask_travel_restrictions
+
+- story: Confirm trip planning after form
+  steps:
+    - intent: plan_trip
+    - action: plan_trip_form
+    - active_loop: plan_trip_form
+    - slot_was_set:
+        - destination: "london"
+        - departure_date: "2025-07-15"
+    - action: plan_trip_form
+    - active_loop: null
+    - action: action_confirm_trip

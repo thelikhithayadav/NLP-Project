@@ -1,0 +1,173 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - plan_trip
+  - search_flight
+  - book_hotel
+  - ask_travel_restrictions
+
+entities:
+  - location
+  - destination
+  - number
+  - date
+  - checkin_date
+  - duration
+
+slots:
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: location
+
+  destination:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: destination
+
+  departure_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: date
+
+  hotel_location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: location
+
+  checkin_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: checkin_date
+
+  num_nights:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: duration
+
+  travel_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: date
+
+  return_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: date
+
+  num_people:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: number
+
+  duration:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: duration
+
+forms:
+  plan_trip_form:
+    required_slots:
+      - destination
+      - departure_date
+
+  flight_search_form:
+    required_slots:
+      - location
+      - departure_date
+
+  hotel_booking_form:
+    required_slots:
+      - hotel_location
+      - checkin_date
+      - num_nights
+
+responses:
+  utter_greet:
+    - text: "👋 Hey there! Ready to plan your next adventure?"
+
+  utter_goodbye:
+    - text: "👋 Bye! Safe travels and hope to chat with you again soon."
+
+  utter_affirm:
+    - text: "👍 Awesome! Let's keep going."
+
+  utter_deny:
+    - text: "No worries. Just let me know if you change your mind."
+
+  utter_mood_great:
+    - text: "😄 Love the energy! Where are we heading?"
+
+  utter_mood_unhappy:
+    - text: "😟 Sorry to hear that. Maybe a getaway will cheer you up?"
+
+  utter_iamabot:
+    - text: "🤖 I'm your travel assistant bot, here to help with trips, flights, and hotels!"
+
+  utter_ask_destination:
+    - text: "🌍 Where would you like to travel?"
+
+  utter_ask_departure_date:
+    - text: "🗓️ When do you want to depart?"
+
+  utter_ask_location:
+    - text: "✈️ Which city are you flying from?"
+
+  utter_ask_hotel_location:
+    - text: "🏨 Which city do you want to stay in?"
+
+  utter_ask_checkin_date:
+    - text: "🛎️ What's your check-in date?"
+
+  utter_ask_num_nights:
+    - text: "⏳ How many nights are you planning to stay?"
+
+  utter_submit_plan_trip_form:
+    - text: "📌 Trip planned to **{destination}** on **{departure_date}**. All set! ✅"
+
+  utter_submit_flight_search_form:
+    - text: "🔎 Looking for flights from **{location}** on **{departure_date}**... 🛫"
+
+  utter_submit_hotel_booking_form:
+    - text: "🏨 Hotel booked in **{hotel_location}** from **{checkin_date}** for **{num_nights} nights**. ✔️"
+
+  utter_default:
+    - text: "🤔 I'm not sure I understood that. Can you rephrase it?"
+
+  utter_ask_travel_restrictions:
+    - text: "📢 For the latest travel restrictions, check official government advisories or embassy websites."
+
+actions:
+  - action_confirm_trip
+  - action_default_fallback
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
